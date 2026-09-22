@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://diabetes-pattern-recognition.onrender.com';
+const API_BASE_URL = 'https://diabetes-pattern-recognition.onrender.com/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
