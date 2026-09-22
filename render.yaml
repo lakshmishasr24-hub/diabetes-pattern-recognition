@@ -1,0 +1,25 @@
+services:
+  # Flask Backend REST API Service
+  - type: web
+    name: diabetes-pr-backend
+    env: python
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python train_models.py
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PORT
+        value: 5000
+
+  # React Vite Frontend Static Site
+  - type: web
+    name: diabetes-pr-frontend
+    env: static
+    region: singapore
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
